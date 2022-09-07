@@ -6,7 +6,7 @@
 
 Ik speel soms met mijn zusje een spelletje genaamd Word Wizard, in dit spel draait het erom wie de meest originele woorden kan bedenken binnen een categorie met een specifieke begin letter. Een persoon dobbelt en mag een categorie uitkiezen, daarna mogen de spelers naast hem/haar een categorie kiezen. Als iedereen een categorie heeft wordt er een letter omgedraaid en heeft iedereen 90 seconden om 3 woorden voor zijn/haar eigen categorie op te schrijven en 2 woorden per tegenspeler van hun categorie. Daarna worden alle woorden met elkaar vergeleken en krijgt iedereen een punt per origineel woord dat ze hebben. Als speler 1 dus een woord van speler 2 heeft geraden krijgt speler 1 geen punt hiervoor. Wie het eerst 15 punten heeft heeft het spel gewonnen. Dit spel wil ik in een app maken zodat het altijd en overal gespeeld kan worden. 
 
-### Meer gedetailleerd: 
+### Meer details
 
 Ik wil een app gaan maken om het spel woord wizard te spelen op je telefoon met vrienden. Woord wizard is een bordspel waarbij je kennis over onderwerpen wordt getest door binnen een bepaalde tijd een 3 woorden binnen een categorie met een specifieke begin letter op te schrijven terwijl je je tegenspeelt probeert dwars te liggen door hun woorden te raden. 
 
