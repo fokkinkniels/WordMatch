@@ -5,6 +5,7 @@ Dit project heeft betrekking op mijn individueel project voor semester 3 bij de 
 ## Inhoud
 
 - [Introductie](#introductie)
+  - [Wie ben ik](#wie-ben-ik)
   - [Het Idee](#het-idee)
   - [Meer Details](#meer-details)
 - [User Stories](#user-stories)
@@ -13,9 +14,14 @@ Dit project heeft betrekking op mijn individueel project voor semester 3 bij de 
 
 ## Introductie
 
+### Wie ben ik
+
+Mijn naam is Niels, ik studeer ICT aan de fontys in Eindhoven. Ik ben 21 jaar oud en kom uit het prachtige Berghem. In mijn vrije tijd game ik graag met vrienden, vind ik het leuk om op stap of naar festivals te gaan en ik vind het heel leuk om dingen te maken, zowel op ICT-gebied als in met m'n handen.  
+
+
 ### Het idee
 
-Ik speel soms met mijn zusje een spelletje genaamd [Word Wizard](https://www.megableu.com/regles-jeu/woordwizard-flashbac.pdf), in dit spel draait het erom wie de meest originele woorden kan bedenken binnen een categorie met een specifieke begin letter. Een persoon dobbelt en mag een categorie uitkiezen, daarna mogen de spelers naast hem/haar een categorie kiezen. Als iedereen een categorie heeft wordt er een letter omgedraaid en heeft iedereen 90 seconden om 3 woorden voor zijn/haar eigen categorie op te schrijven en 2 woorden per tegenspeler van hun categorie. Daarna worden alle woorden met elkaar vergeleken en krijgt iedereen een punt per origineel woord dat ze hebben. Als speler 1 dus een woord van speler 2 heeft geraden krijgt speler 1 geen punt hiervoor. Wie het eerst 15 punten heeft heeft het spel gewonnen. Dit spel wil ik in een app maken zodat het altijd en overal gespeeld kan worden. 
+Ik speel soms met mijn zusje een spelletje genaamd [Word Wizard](https://www.megableu.com/regles-jeu/woordwizard-flashbac.pdf), in dit spel draait het erom wie de meest originele/creatieve woorden kan bedenken binnen een categorie met een specifieke begin letter. Een persoon dobbelt en mag een categorie uitkiezen, daarna mogen de spelers naast hem/haar een categorie kiezen. Als iedereen een categorie heeft wordt er een letter omgedraaid en heeft iedereen 90 seconden om 3 woorden voor zijn/haar eigen categorie op te schrijven en 2 woorden per tegenspeler van hun categorie. Daarna worden alle woorden met elkaar vergeleken en krijgt iedereen een punt per origineel woord dat ze hebben. Als speler 1 dus een woord van speler 2 heeft geraden krijgt speler 1 geen punt hiervoor. Wie het eerst 15 punten heeft heeft het spel gewonnen. Dit spel wil ik in een app maken zodat het altijd en overal gespeeld kan worden. 
 
 ### Meer details
 
