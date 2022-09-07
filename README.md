@@ -17,3 +17,24 @@ De app kan speler profielen onthouden en opslaan voor gebruik in latere games of
 Je hebt geen profiel nodig om online met vrienden te kunnen spelen, je kunt de game met een gast-account spelen waardoor je geen account aan hoeft te maken, echter worden je scores en games dan niet opgeslagen. Als je wel een account hebt kun je ook de accounts van je vrienden toevoegen zodat het makkelijker is om samen een spel te spelen. 
 
 De app krijgt een verificatie feature om te checken of de ingevulde antwoorden wel binnen de categorie vallen en met de goede letter beginnen. Bijvoorbeeld: de categorie is sporten en de letter is een B, een speler geeft als woord Basketbal. De game checkt dan of Basketbal met een B begint, zo ja kijkt de game of basketbal een sport is, als dit niet zo is zal er een opmerking bij komen te staan van “klopt dit?”, want het is natuurlijk mogelijk dat de persoon wel iets weet maar de game dit niet herkent of dat er een spelfout in het antwoord staat. 
+
+## Documentatie
+
+### De Users
+
+#### Karel Apenboom
+
+Karel is een jongen van 21 die in zijn vrije tijd graag gamet met zijn vrienden en is hier soms best competitief in. Hij is niet de hardcore gamer die elke avond tot 4 uur achter zijn PC zit maar als het weekend is en hij heeft niks de volgende dag wordt het al gauw na twaalven. Sommige van zijn vrienden zijn wel de hardcore gamers die elk vrij moment opgeven om nog een spelletje te spelen, die jongens zijn dus ook een stuk beter dan hem omdat ze meer uren in de spellen hebben. Karel vind het daarom leuk om spelletjes met zijn vrienden te spelen waar het niet uitmaakt hoe goed je met je muis en keyboard bent maar waar iedereen gelijk in is ondanks hoeveel deze persoon gespeeld heeft. Karel vind het ook leuk om met zijn vrienden af te spreken en een biertje te drinken en een spelletje te spelen. Karel werkt elke weekend een paar uur in de supermarkt als groenteboer en doet dit al sinds dat hij 17 is. 
+
+
+### De user story’s
+
+- Karel en zijn vrienden willen het spel vanaf hun eigen telefoon spelen zodat iedereen gelijke kansen heeft, niemand vals kan spelen en de scores en games opgeslagen kunnen worden. 
+
+- Karel wil een makkelijk en overzichtelijk interface zodat het spel makkelijk is uit te leggen aan zijn vrienden dit het nog nooit gespeeld hebben. 
+
+- Karel wil kunnen zien wie er het meeste punten heeft verdient van hem en zijn vrienden zodat hij kan zien wie er gewonnen heeft. 
+
+- Karel wil dat de game vanaf alleen zijn telefoon gespeeld kan worden zodat niet iedereen een app hoeft te downloaden. 
+
+- Karel wil een feature die antwoorden nakijkt zodat er geen foute antwoorden goed gerekend kunnen worden. 
