@@ -1,6 +1,6 @@
 # WordMatch
 
-## Intro
+## Introductie
 
 ### Het idee
 
