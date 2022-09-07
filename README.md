@@ -18,7 +18,7 @@ Je hebt geen profiel nodig om online met vrienden te kunnen spelen, je kunt de g
 
 De app krijgt een verificatie feature om te checken of de ingevulde antwoorden wel binnen de categorie vallen en met de goede letter beginnen. Bijvoorbeeld: de categorie is sporten en de letter is een B, een speler geeft als woord Basketbal. De game checkt dan of Basketbal met een B begint, zo ja kijkt de game of basketbal een sport is, als dit niet zo is zal er een opmerking bij komen te staan van “klopt dit?”, want het is natuurlijk mogelijk dat de persoon wel iets weet maar de game dit niet herkent of dat er een spelfout in het antwoord staat. 
 
-## Documentatie
+## User Storiy's
 
 ### De Users
 
