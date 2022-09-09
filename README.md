@@ -77,7 +77,7 @@ Karel is een jongen van 21 die in zijn vrije tijd graag gamet met zijn vrienden 
 
   - [x] Flowchart van het spel maken
   - [x] Regels uitschrijven
-  - [ ] Flowchart applicatie maken
+  - [x] Flowchart applicatie maken
   - [ ] Homepage ontwerpen
   - [ ] Regel pagina ontwerpen
   - [ ] Spel pagina's ontwerpen
