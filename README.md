@@ -46,15 +46,7 @@ Karel is een jongen van 21 die in zijn vrije tijd graag gamet met zijn vrienden 
 
 ### De user stories
 
-- Karel en zijn vrienden willen het spel vanaf hun eigen telefoon spelen zodat iedereen gelijke kansen heeft, niemand vals kan spelen en de scores en games opgeslagen kunnen worden.
-  
-  *Acceptatie criteria*:
-  - [ ] Er moeten twee of meerdere applicaties met elkaar verbonden kunnen worden
-  - [ ] De uitslag van het spel wordt naar eend database gestuurd
-
----
-
-- Karel wil een makkelijk en overzichtelijk interface zodat het spel makkelijk is uit te leggen aan zijn vrienden dit het nog nooit gespeeld hebben. 
+- U1 Karel wil een makkelijk en overzichtelijk interface zodat het spel makkelijk is uit te leggen aan zijn vrienden dit het nog nooit gespeeld hebben. 
   
   *Acceptatie criteria*:
   - [ ] Er moet een UI gemaakt worden
@@ -63,14 +55,22 @@ Karel is een jongen van 21 die in zijn vrije tijd graag gamet met zijn vrienden 
 
 ---
 
-- Karel wil kunnen zien wie er het meeste punten heeft verdiend van hem en zijn vrienden zodat hij kan zien wie er gewonnen heeft. 
+- U2 Karel en zijn vrienden willen het spel vanaf hun eigen telefoon spelen zodat iedereen gelijke kansen heeft, niemand vals kan spelen en de scores en games opgeslagen kunnen worden.
+  
+  *Acceptatie criteria*:
+  - [ ] Er moeten twee of meerdere applicaties met elkaar verbonden kunnen worden
+  - [ ] De uitslag van het spel wordt naar eend database gestuurd
+
+---
+
+- U3 Karel wil kunnen zien wie er het meeste punten heeft verdiend van hem en zijn vrienden zodat hij kan zien wie er gewonnen heeft. 
   
   *Acceptatie criteria*:
     - [ ] Er moet een pagina zijn waar alle behaalde scores op tezien zijn
 
 ---
 
-- Karel wil een feature die antwoorden nakijkt zodat er geen foute antwoorden goed gerekend kunnen worden. 
+- U4 Karel wil een feature die antwoorden nakijkt zodat er geen foute antwoorden goed gerekend kunnen worden. 
   
   *Acceptatie criteria*:
     - [ ] Als er een fout antwoord ingevuld word moet er een 'red flag' bij komen te staan
