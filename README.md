@@ -59,7 +59,7 @@ Karel is een jongen van 21 die in zijn vrije tijd graag gamet met zijn vrienden 
   *Acceptatie criteria*:
   - [ ] Er moet een UI gemaakt worden
   - [ ] De regels moeten uitgelegd worden
-  - [ ] De UI moet getest zijn om aan te tonen dat hij overzichtelijk is
+  - [ ] De UI moet getest zijn op overzichtelijkheid en bruikbaarheid
 
 ---
 
