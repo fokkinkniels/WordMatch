@@ -41,37 +41,38 @@ De app krijgt een verificatie feature om te checken of de ingevulde antwoorden w
 
 #### Karel Apenboom
 
-Karel is een jongen van 21 die in zijn vrije tijd graag gamet met zijn vrienden en is hier soms best competitief in. Hij is niet de hardcore gamer die elke avond tot 4 uur achter zijn PC zit maar als het weekend is en hij heeft niks de volgende dag wordt het al gauw na twaalven. Sommige van zijn vrienden zijn wel de hardcore gamers die elk vrij moment opgeven om nog een spelletje te spelen, die jongens zijn dus ook een stuk beter dan hem omdat ze meer uren in de spellen hebben. Karel vind het daarom leuk om spelletjes met zijn vrienden te spelen waar het niet uitmaakt hoe goed je met je muis en keyboard bent maar waar iedereen gelijk in is ondanks hoeveel deze persoon gespeeld heeft. Karel vind het ook leuk om met zijn vrienden af te spreken en een biertje te drinken en een spelletje te spelen. Karel werkt elke weekend een paar uur in de supermarkt als groenteboer en doet dit al sinds dat hij 17 is. 
+Karel is een jongen van 21 die in zijn vrije tijd graag gamet met zijn vrienden en is hier soms best competitief in. Hij is niet de hardcore gamer die elke avond tot 4 uur achter zijn PC zit maar als het weekend is en hij heeft niks de volgende dag wordt het al gauw na twaalven. Sommige van zijn vrienden zijn wel de hardcore gamers die elk vrij moment opgeven om nog een spelletje te spelen, die jongens zijn dus ook een stuk beter dan hem omdat ze meer uren in de spellen hebben. Karel vindt het daarom leuk om spelletjes met zijn vrienden te spelen waar het niet uitmaakt hoe goed je met je muis en keyboard bent maar waar iedereen gelijk in is ondanks hoeveel deze persoon gespeeld heeft. Karel vindt het ook leuk om met zijn vrienden af te spreken en een biertje te drinken en een spelletje te spelen. Karel werkt elke weekend een paar uur in de supermarkt als groenteboer en doet dit al sinds dat hij 17 is.  
 
 
 ### De user stories
 
 - Karel en zijn vrienden willen het spel vanaf hun eigen telefoon spelen zodat iedereen gelijke kansen heeft, niemand vals kan spelen en de scores en games opgeslagen kunnen worden.
   
-  *Acceptatie kriteria*:
-  - [ ] Er moeten twee of meerdere applicaties met elkaar verbonen kunnen worden
+  *Acceptatie criteria*:
+  - [ ] Er moeten twee of meerdere applicaties met elkaar verbonden kunnen worden
+  - [ ] De uitslag van het spel wordt naar eend database gestuurd
 
 ---
 
 - Karel wil een makkelijk en overzichtelijk interface zodat het spel makkelijk is uit te leggen aan zijn vrienden dit het nog nooit gespeeld hebben. 
   
-  *Acceptatie kriteria*:
+  *Acceptatie criteria*:
   - [ ] Er moet een UI gemaakt worden
   - [ ] De regels moeten uitgelegd worden
   - [ ] De UI moet getest zijn om aan te tonen dat hij overzichtelijk is
 
 ---
 
-- Karel wil kunnen zien wie er het meeste punten heeft verdient van hem en zijn vrienden zodat hij kan zien wie er gewonnen heeft. 
+- Karel wil kunnen zien wie er het meeste punten heeft verdiend van hem en zijn vrienden zodat hij kan zien wie er gewonnen heeft. 
   
-  *Acceptatie kriteria*:
+  *Acceptatie criteria*:
     - [ ] Er moet een pagina zijn waar alle behaalde scores op tezien zijn
 
 ---
 
 - Karel wil een feature die antwoorden nakijkt zodat er geen foute antwoorden goed gerekend kunnen worden. 
   
-  *Acceptatie kriteria*:
+  *Acceptatie criteria*:
     - [ ] Als er een fout antwoord ingevuld word moet er een 'red flag' bij komen te staan
     - [ ] Er moet een database zijn met correcte antwoorden
-    - [ ] Er moeten woorden aan de database toegevoeg kunnen worden
+    - [ ] Er moeten woorden aan de database toegevoegd kunnen worden
