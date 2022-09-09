@@ -51,6 +51,8 @@ Karel is een jongen van 21 die in zijn vrije tijd graag gamet met zijn vrienden 
   *Acceptatie kriteria*:
   - Er moeten twee of meerdere applicaties met elkaar verbonen kunnen worden
 
+======
+
 - Karel wil een makkelijk en overzichtelijk interface zodat het spel makkelijk is uit te leggen aan zijn vrienden dit het nog nooit gespeeld hebben. 
   
   *Acceptatie kriteria*:
@@ -58,10 +60,14 @@ Karel is een jongen van 21 die in zijn vrije tijd graag gamet met zijn vrienden 
   - De regels moeten uitgelegd worden
   - De UI moet getest zijn om aan te tonen dat hij overzichtelijk is
 
+======
+
 - Karel wil kunnen zien wie er het meeste punten heeft verdient van hem en zijn vrienden zodat hij kan zien wie er gewonnen heeft. 
   
   *Acceptatie kriteria*:
     - Er moet een pagina zijn waar alle behaalde scores op tezien zijn
+
+======
 
 - Karel wil een feature die antwoorden nakijkt zodat er geen foute antwoorden goed gerekend kunnen worden. 
   
