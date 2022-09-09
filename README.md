@@ -75,9 +75,9 @@ Dit zijn de user stories van mijn project op volgorde van prioriteit. Onder de u
 
 ### U1
 
-  - [x] Flowchart van het spel maken
-  - [x] Regels uitschrijven
-  - [x] Flowchart applicatie maken
+  - [x] Flowchart van het spel maken [(flowchart)](https://github.com/fokkinkniels/WordMatch/blob/main/Documentatie/WoordMatch_Flowchart_Game.png)
+  - [x] Regels uitschrijven [(spelregels)](https://github.com/fokkinkniels/WordMatch/blob/main/Documentatie/Regels.md)
+  - [x] Flowchart applicatie maken [(flowchart)](https://github.com/fokkinkniels/WordMatch/blob/main/Documentatie/WoordMatch_Flowchart_Application_Frontend.png)
   - [ ] Homepage ontwerpen
   - [ ] Regel pagina ontwerpen
   - [ ] Spel pagina's ontwerpen
