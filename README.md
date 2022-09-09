@@ -83,5 +83,6 @@ Dit zijn de user stories van mijn project op volgorde van prioriteit. Onder de u
   - [ ] Regel pagina ontwerpen
   - [ ] Spel pagina's ontwerpen
   - [ ] Score pagina ontwerpen
+  - [ ] Vrienden pagina's ontwerpen
   - [ ] User test maken
   - [ ] Design testen
