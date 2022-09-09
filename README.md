@@ -12,6 +12,7 @@ Dit project heeft betrekking op mijn individueel project voor semester 3 bij de 
 - [User Stories](#user-stories)
   - [De Users](#de-users)
   - [De User Stories](#de-user-stories)
+- [Requirements](#requirements)
 
 
 ## Introductie
