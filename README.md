@@ -14,7 +14,6 @@ Dit project heeft betrekking op mijn individueel project voor semester 3 bij de 
   - [De User Stories](#de-user-stories)
 
 
-
 ## Introductie
 
 ### Wie ben ik
@@ -29,7 +28,7 @@ Ik speel soms met mijn zusje een spelletje genaamd [Word Wizard](https://www.meg
 
 Ik wil een app gaan maken om het spel woord wizard te spelen op je telefoon met vrienden. Woord wizard is een bordspel waarbij je kennis over onderwerpen wordt getest door binnen een bepaalde tijd een 3 woorden binnen een categorie met een specifieke begin letter op te schrijven terwijl je je tegenspeelt probeert dwars te liggen door hun woorden te raden. 
 
-Ik wil de app speelbaar maken vanaf een apparaat of vanaf meerdere, hiervoor komt een optie aan het begin van het spel. Om op meerdere apparaten te spelen moeten alle spelers een account hebben en een eigen apparaat met de app. Om de game met meerdere apparaten te spelen is er een internet verbinding nodig om met elkaar te communiceren. Als de game op een apparaat gespeeld wordt is dit offline dus mogelijk vanaf overal. 
+Ik wil de app speelbaar maken vanaf een apparaat of vanaf meerdere, hiervoor komt een optie aan het begin van het spel. Om op meerdere apparaten te spelen moeten alle spelers een account hebben en een eigen apparaat met de app. Om de game met meerdere apparaten te spelen is er een internetverbinding nodig om met elkaar te communiceren. Als de game op een apparaat gespeeld wordt is dit offline dus mogelijk vanaf overal. 
 
 De app kan speler profielen onthouden en opslaan voor gebruik in latere games of om scores en games op te slaan zodat je kan zien wie er van je vrienden het beste is. Hiermee zou er ook een soort highscore pagina kunnen komen of een highlight pagina met de beste, meest bizarre of oneerlijkste overwinningen.  
 
@@ -38,36 +37,37 @@ Je hebt geen profiel nodig om online met vrienden te kunnen spelen, je kunt de g
 De app krijgt een verificatie feature om te checken of de ingevulde antwoorden wel binnen de categorie vallen en met de goede letter beginnen. Bijvoorbeeld: de categorie is sporten en de letter is een B, een speler geeft als woord Basketbal. De game checkt dan of Basketbal met een B begint, zo ja kijkt de game of basketbal een sport is, als dit niet zo is zal er een opmerking bij komen te staan van “klopt dit?”, want het is natuurlijk mogelijk dat de persoon wel iets weet maar de game dit niet herkent of dat er een spelfout in het antwoord staat. 
 
 
-
 ## User Stories
 
 ### De Users
 
 #### Karel Apenboom
 
-Karel is een jongen van 21 die in zijn vrije tijd graag gamet met zijn vrienden en is hier soms best competitief in. Hij is niet de hardcore gamer die elke avond tot 4 uur achter zijn PC zit maar als het weekend is en hij heeft niks de volgende dag wordt het al gauw na twaalven. Sommige van zijn vrienden zijn wel de hardcore gamers die elk vrij moment opgeven om nog een spelletje te spelen, die jongens zijn dus ook een stuk beter dan hem omdat ze meer uren in de spellen hebben. Karel vind het daarom leuk om spelletjes met zijn vrienden te spelen waar het niet uitmaakt hoe goed je met je muis en keyboard bent maar waar iedereen gelijk in is ondanks hoeveel deze persoon gespeeld heeft. Karel vind het ook leuk om met zijn vrienden af te spreken en een biertje te drinken en een spelletje te spelen. Karel werkt elke weekend een paar uur in de supermarkt als groenteboer en doet dit al sinds dat hij 17 is. 
+Karel is een jongen van 21 die in zijn vrije tijd graag gamet met zijn vrienden en is hier soms best competitief in. Hij is niet de hardcore gamer die elke avond tot 4 uur achter zijn PC zit maar als het weekend is en hij heeft niks de volgende dag wordt het al gauw na twaalven. Sommige van zijn vrienden zijn wel de hardcore gamers die elk vrij moment opgeven om nog een spelletje te spelen, die jongens zijn dus ook een stuk beter dan hem omdat ze meer uren in de spellen hebben. Karel vindt het daarom leuk om spelletjes met zijn vrienden te spelen waar het niet uitmaakt hoe goed je met je muis en keyboard bent maar waar iedereen gelijk in is ondanks hoeveel deze persoon gespeeld heeft. Karel vindt het ook leuk om met zijn vrienden af te spreken en een biertje te drinken en een spelletje te spelen. Karel werkt elke weekend een paar uur in de supermarkt als groenteboer en doet dit al sinds dat hij 17 is. 
+
 
 ### De user stories
+Dit zijn de user stories van mijn project op volgorde van prioriteit. Onder de user stories staan de gerelateerde acceptatiecriteria:
 
-- Karel wil een makkelijk en overzichtelijk interface zodat het spel makkelijk is uit te leggen aan zijn vrienden dit het nog nooit gespeeld hebben. 
-  *Acceptatie kriteria*:
+
+- **U1** Karel wil een makkelijk en overzichtelijk interface zodat het spel makkelijk is uit te leggen aan zijn vrienden dit het nog nooit gespeeld hebben. 
   - Er moet een UI gemaakt worden
   - De regels moeten uitgelegd worden
   - De UI moet getest zijn om aan te tonen dat hij overzichtelijk is
 
-- Karel en zijn vrienden willen het spel vanaf hun eigen telefoon spelen zodat iedereen gelijke kansen heeft, niemand vals kan spelen en de scores en games opgeslagen kunnen worden
-    *Acceptatie kriteria*:
-    - Er moeten twee of meerdere applicaties met elkaar verbonen kunnen worden
 
-- Karel wil kunnen zien wie er het meeste punten heeft verdient van hem en zijn vrienden zodat hij kan zien wie er gewonnen heeft. 
-  *Acceptatie kriteria*:
+- **U2** Karel en zijn vrienden willen het spel vanaf hun eigen telefoon spelen zodat iedereen gelijke kansen heeft, niemand vals kan spelen en de scores en games opgeslagen kunnen worden.
+    - Er moeten twee of meerdere applicaties met elkaar verbonden kunnen worden
+
+
+- **U3** Karel wil kunnen zien wie er het meeste punten heeft verdient van hem en zijn vrienden zodat hij kan zien wie er gewonnen heeft. 
     - Er moet een pagina zijn waar alle behaalde scores op tezien zijn
 
-- Karel wil een feature die antwoorden nakijkt zodat er geen foute antwoorden goed gerekend kunnen worden. 
-  *Acceptatie kriteria*:
+
+- **U4** Karel wil een feature die antwoorden nakijkt zodat er geen foute antwoorden goed gerekend kunnen worden. 
     - Als er een fout antwoord ingevuld word moet er een 'red flag' bij komen te staan
     - Er moet een database zijn met correcte antwoorden
-    - Er moeten woorden aan de database toegevoeg kunnen worden
+    - Er moeten woorden aan de database toegevoegd kunnen worden
 
 
 
