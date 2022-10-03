@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <BlockGame />
+    <ChatApp />
   </div>
 </template>
 
 <script>
-    import BlockGame from './components/BlockGame.vue'
+    import ChatApp from './components/ChatApp.vue'
 
     export default {
           name: 'App',
           components: {
-              BlockGame
+            ChatApp
           }
     }
 </script>
