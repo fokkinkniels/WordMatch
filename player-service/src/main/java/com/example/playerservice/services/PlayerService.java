@@ -17,7 +17,7 @@ public class PlayerService {
     //Get Services
 
     public ResponseEntity<List<Player>> GetAllPlayers() {
-        return new ResponseEntity<List<Player>>(playerRepository.findAll(), HttpStatus.OK);
+        return new ResponseEntity<>(playerRepository.findAll(), HttpStatus.OK);
     }
 
     public ResponseEntity<Player> GetPlayerById(String id) {
@@ -27,7 +27,7 @@ public class PlayerService {
 
     public ResponseEntity<List<Player>> GetPLayerFriends(String id) {
         var friends = playerRepository.findById(id).get().getFriendIds();
-        return new ResponseEntity<List<Player>>(playerRepository.findAllByIdIsIn(friends), HttpStatus.OK);
+        return new ResponseEntity<>(playerRepository.findAllByIdIsIn(friends), HttpStatus.OK);
     }
 
 
@@ -35,10 +35,10 @@ public class PlayerService {
 
     public ResponseEntity<String> CreateNewPLayer(Player player) {
         if (player.getId() != null){
-            return new ResponseEntity<String>("Player already exists", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Player already exists", HttpStatus.BAD_REQUEST);
         }
         playerRepository.save(player);
-        return new ResponseEntity<String>("Player has been saved!   {id:"+ player.getId() +"}", HttpStatus.OK);
+        return new ResponseEntity<>("Player has been saved!   {id:"+ player.getId() +"}", HttpStatus.OK);
     }
 
 
@@ -49,7 +49,7 @@ public class PlayerService {
         String friendId = ids.get(1);
 
         if (playerId.equals(friendId))
-            return new ResponseEntity<String>("Player cant be friends with him/herself", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Player cant be friends with him/herself", HttpStatus.BAD_REQUEST);
 
         if (playerRepository.findById(ids.get(0)).isPresent()){
             Player player = playerRepository.findById(ids.get(0)).get();
@@ -57,13 +57,13 @@ public class PlayerService {
             if (!friends.contains(friendId)){
                 friends.add(friendId);
                 playerRepository.save(player);
-                return new ResponseEntity<String>("Friend Added", HttpStatus.OK);
+                return new ResponseEntity<>("Friend Added", HttpStatus.OK);
             }
             else
-                return new ResponseEntity<String>("Players are already friends", HttpStatus.BAD_REQUEST);
+                return new ResponseEntity<>("Players are already friends", HttpStatus.BAD_REQUEST);
         }
         else
-            return new ResponseEntity<String>("Player not found", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Player not found", HttpStatus.BAD_REQUEST);
         }
 
     public ResponseEntity<String> RemoveFriend(List<String> ids) {
@@ -77,22 +77,22 @@ public class PlayerService {
             if (friends.contains(friendId)){
                 friends.remove(friendId);
                 playerRepository.save(player);
-                return new ResponseEntity<String>("Friend Removed", HttpStatus.OK);
+                return new ResponseEntity<>("Friend Removed", HttpStatus.OK);
             }
             else
-                return new ResponseEntity<String>("Friend not found", HttpStatus.BAD_REQUEST);
+                return new ResponseEntity<>("Friend not found", HttpStatus.BAD_REQUEST);
         }
         else
-            return new ResponseEntity<String>("Player not found", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Player not found", HttpStatus.BAD_REQUEST);
     }
 
     public ResponseEntity<String> UpdatePLayer(Player player) {
         if (playerRepository.findById(player.getId()).isPresent()){
             playerRepository.save(player);
-            return new ResponseEntity<String>("Player has been updated", HttpStatus.OK);
+            return new ResponseEntity<>("Player has been updated", HttpStatus.OK);
         }
         else
-            return new ResponseEntity<String>("Player not found", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Player not found", HttpStatus.BAD_REQUEST);
     }
 
 
@@ -109,9 +109,9 @@ public class PlayerService {
                 playerRepository.save(p);
             }
 
-            return new ResponseEntity<String>("Player has been removed", HttpStatus.OK);
+            return new ResponseEntity<>("Player has been removed", HttpStatus.OK);
         }
         else
-            return new ResponseEntity<String>("Player not found", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Player not found", HttpStatus.BAD_REQUEST);
     }
 }
