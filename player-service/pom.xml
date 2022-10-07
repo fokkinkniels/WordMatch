@@ -9,12 +9,12 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>WoordMatch_FriendService</artifactId>
+	<artifactId>player-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>WoordMatch_FriendService</name>
-	<description>WoordMatch_FriendService</description>
+	<name>player-service</name>
+	<description>player-service</description>
 	<properties>
-		<java.version>17</java.version>
+		<java.version>19</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -26,12 +26,6 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
-			<scope>runtime</scope>
-			<optional>true</optional>
-		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>

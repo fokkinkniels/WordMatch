@@ -1,10 +1,10 @@
-package com.example.woordmatch_friendservice;
+package com.example.playerservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class WoordMatchFriendServiceApplicationTests {
+class PlayerServiceApplicationTests {
 
 	@Test
 	void contextLoads() {

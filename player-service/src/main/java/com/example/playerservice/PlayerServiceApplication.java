@@ -1,13 +1,12 @@
-package com.example.woordmatch_friendservice;
+package com.example.playerservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class WoordMatchFriendServiceApplication {
+public class PlayerServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(WoordMatchFriendServiceApplication.class, args);
+		SpringApplication.run(PlayerServiceApplication.class, args);
 	}
-
 }
