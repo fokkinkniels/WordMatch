@@ -12,11 +12,11 @@ public class Player {
     private String id;
     private String name;
     private String email;
-    private List<String> friend_ids;
+    private List<String> friendIds;
 
-    public Player(String name, String email, List<String> friend_ids) {
+    public Player(String name, String email, List<String> friendIds) {
         this.name = name;
         this.email = email;
-        this.friend_ids = friend_ids;
+        this.friendIds = friendIds;
     }
 }

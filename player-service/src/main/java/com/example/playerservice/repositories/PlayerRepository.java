@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface PlayerRepository extends MongoRepository<Player, String> {
     List<Player> findAllByIdIsIn(List<String> ids);
+    List<Player> findPlayerByfriendIdsContains (String id);
 }

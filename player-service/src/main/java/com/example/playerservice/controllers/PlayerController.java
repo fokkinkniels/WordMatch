@@ -6,7 +6,9 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.SplittableRandom;
 
 @RestController
 @RequestMapping("api/player")
@@ -22,13 +24,47 @@ public class PlayerController {
         return playerService.GetAllPlayers();
     }
 
-    @GetMapping()
-    public ResponseEntity<Player> FetchPlayerById(@RequestParam String id){
+    @GetMapping("/{id}")
+    public ResponseEntity<Player> FetchPlayerById(@PathVariable String id){
         return playerService.GetPlayerById(id);
     }
 
-    @GetMapping("/friends")
-    public ResponseEntity<List<Player>> FetchPlayerFriends (@RequestParam String id){
+    @GetMapping("/friends/{id}")
+    public ResponseEntity<List<Player>> FetchPlayerFriends(@PathVariable String id){
         return playerService.GetPLayerFriends(id);
+    }
+
+
+    //Post Endpoints
+
+    @PostMapping("/create")
+    public ResponseEntity<String> CreateNewPlayer(@RequestBody Player player){
+        return playerService.CreateNewPLayer(player);
+    }
+
+
+    //Put Endpoints
+
+    @PutMapping("/friends/add")
+    public ResponseEntity<String> AddNewFriend(@RequestBody List<String> ids){
+        return playerService.AddNewFriend(ids);
+    }
+
+    @PutMapping("/friends/remove")
+    public ResponseEntity<String> RemoveFriend(@RequestBody List<String> ids){
+        return playerService.RemoveFriend(ids);
+    }
+
+    @PutMapping("/update")
+    public ResponseEntity<String> UpdatePlayer(@RequestBody Player player){
+        return playerService.UpdatePLayer(player);
+    }
+
+
+    //Delete Endpoints
+
+    @DeleteMapping("/delete")
+    public ResponseEntity<String> RemovePlayer(@RequestBody Player player){
+        return playerService.RemovePlayer(player);
     }
 }
