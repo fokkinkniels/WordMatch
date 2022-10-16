@@ -38,7 +38,7 @@ public class PlayerService {
             return new ResponseEntity<>("Player already exists", HttpStatus.BAD_REQUEST);
         }
         playerRepository.save(player);
-        return new ResponseEntity<>("Player has been saved!   {id:"+ player.getId() +"}", HttpStatus.OK);
+        return new ResponseEntity<>("Player has been saved! id:"+ player.getId(), HttpStatus.OK);
     }
 
 
