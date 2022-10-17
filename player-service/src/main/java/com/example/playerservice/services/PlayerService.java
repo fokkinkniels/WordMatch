@@ -98,17 +98,16 @@ public class PlayerService {
 
     //Delete Services
 
-    public ResponseEntity<String> RemovePlayer(Player player) {
-        String id = player.getId();
+    public ResponseEntity<String> RemovePlayer(String id) {
+
         if (playerRepository.findById(id).isPresent()){
-            playerRepository.delete(player);
+            playerRepository.delete(playerRepository.findById(id).get());
 
             var players = playerRepository.findPlayerByfriendIdsContains(id);
             for (var p:players) {
                 p.getFriendIds().remove(id);
                 playerRepository.save(p);
             }
-
             return new ResponseEntity<>("Player has been removed", HttpStatus.OK);
         }
         else

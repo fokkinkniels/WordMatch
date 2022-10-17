@@ -70,6 +70,7 @@ export default {
             friendsIds: [],  
             myfriends: [],
 
+            check: 0,
             tmpId: "",
             tmpName: "",
             tmpEmail: "",
@@ -98,19 +99,26 @@ export default {
                 this.users = res.data;
             }
         },
-        async getMyFriends(){
-            const res = await axios.get(this.baseUrl+"/friends/"+this.id)
-            if (res.status == 200){
-                this.myfriends = res.data;
-            }
-        },
-        async getProfile(id){
+        async getUser(id){
             const res = await axios.get(this.baseUrl+"/"+id)
             if (res.status == 200){
                 this.tmpId = res.data.id;
                 this.tmpName = res.data.name;
                 this.tmpEmail = res.data.email;
                 this.tmpFriendsIds = res.data.friendsIds;
+
+                if (this.check == 0){
+                    this.name = this.tmpName
+                    this.email = this.tmpEmail
+                    this.friendsIds = this.tmpFriendList
+                    this.check = 1
+                }
+            }
+        },
+        async getMyFriends(){
+            const res = await axios.get(this.baseUrl+"/friends/"+this.id)
+            if (res.status == 200){
+                this.myfriends = res.data;
             }
         },
         async AddFriend(id){
@@ -131,22 +139,19 @@ export default {
         },
         async RemoveUser(id){
             if(this.id != id){
-                await this.getProfile(id);
-                const json = await JSON.stringify({id: this.tmpId,name: this.tmpName,email: this.tmpEmail,friendIds: this.tmpFriendList})
-                const res = await axios.delete(this.baseUrl+"/delete", json,  {headers: {'Content-Type': 'application/json'}})
+                const res = await axios.delete(this.baseUrl+"/delete/"+id)
                 if (res.status == 200){
-                    this.state = 1;
                     this.getAllUsers();
+                    this.getMyFriends();
                 }
             }
         },
 
     },
+    beforeMount () {
+        this.getUser(this.id);
+    },
     mounted () {
-        var user = this.getProfile(this.id);
-        this.name = user[1]
-        this.email = user[2]
-        this.friendsIds = user[3]
 
         this.getAllUsers();
         this.getMyFriends();
