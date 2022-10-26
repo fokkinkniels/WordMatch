@@ -6,7 +6,9 @@
             <input placeholder="Email..." v-model="tmpEmail" type="text">
             <input type="submit" value="Submit">
         </form>
+        <button v-on:click="state = 1">Back</button>
     </div>
+
 
     <div v-if="state == 1">
         <h1>My profile:</h1>
@@ -28,6 +30,7 @@
         <button v-on:click="state = 3">Remove Player</button>
     </div>
 
+
     <div v-if="state == 2">
         <div class="user" v-for="(user, i) in users" :key="i" >
             <h3>{{user.name}}</h3>
@@ -35,7 +38,9 @@
             <button v-on:click="AddFriend(user.id)">Add Friend</button>
             <br>
         </div>
+        <button v-on:click="state = 1">Back</button>
     </div>
+
 
     <div v-if="state == 3">
         <div class="user" v-for="(user, i) in users" :key="i" >
@@ -46,10 +51,11 @@
         </div>
         <br>
         <button v-on:click="state = 1">Back</button>
-        <button @click="test">
+    </div>
+    <br>
+    <button @click="test">
             test
         </button>
-    </div>
 </div>    
 </template>
 
@@ -77,7 +83,7 @@ export default {
     },
     methods: {
         async createUser(){
-            const json = JSON.stringify({name: this.name,email: this.email,friendIds: this.friendsIds})
+            const json = JSON.stringify({name: this.tmpName,email: this.tmpEmail,friendIds: this.tmpFriendList})
             const res = await this.$axios.post("/create", json); 
             if (res.status == 200){
                 this.state = 1;
@@ -91,7 +97,7 @@ export default {
             }
         },
         async getUser(id){
-            const res = await axios.get(this.baseUrl+"/"+id)
+            const res = await this.$axios.get("/"+id)
             if (res.status == 200){
                 this.tmpId = res.data.id;
                 this.tmpName = res.data.name;
@@ -107,14 +113,14 @@ export default {
             }
         },
         async getMyFriends(){
-            const res = await axios.get(this.baseUrl+"/friends/"+this.id)
+            const res = await this.$axios.get("/friends/"+this.id)
             if (res.status == 200){
                 this.myfriends = res.data;
             }
         },
         async AddFriend(id){
             const json = JSON.stringify([this.id, id])
-            const res = await axios.put(this.baseUrl+"/friends/add", json,  {headers: {'Content-Type': 'application/json'}})
+            const res = await this.$axios.put("/friends/add", json,  {headers: {'Content-Type': 'application/json'}})
             if (res.status == 200){
                 this.state = 1;
                 this.getMyFriends();
@@ -122,7 +128,7 @@ export default {
         },
         async RemoveFriend(id){
             const json = JSON.stringify([this.id, id])
-            const res = await axios.put(this.baseUrl+"/friends/remove", json,  {headers: {'Content-Type': 'application/json'}})
+            const res = await this.$axios.put("/friends/remove", json,  {headers: {'Content-Type': 'application/json'}})
             if (res.status == 200){
                 this.state = 1;
                 this.getMyFriends();
@@ -130,7 +136,7 @@ export default {
         },
         async RemoveUser(id){
             if(this.id != id){
-                const res = await axios.delete(this.baseUrl+"/delete/"+id)
+                const res = await this.$axios.delete("/delete/"+id)
                 if (res.status == 200){
                     this.getAllUsers();
                     this.getMyFriends();
@@ -141,6 +147,7 @@ export default {
     },
     beforeMount () {
         this.getUser(this.id);
+        this.getMyFriends();
     },
     mounted () {
 
