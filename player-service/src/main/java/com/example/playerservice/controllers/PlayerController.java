@@ -67,8 +67,8 @@ public class PlayerController {
 
     //Delete Endpoints
 
-    @DeleteMapping("/delete")
-    public ResponseEntity<String> RemovePlayer(@RequestBody Player player){
-        return playerService.RemovePlayer(player);
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<String> RemovePlayer(@PathVariable String id){
+        return playerService.RemovePlayer(id);
     }
 }
