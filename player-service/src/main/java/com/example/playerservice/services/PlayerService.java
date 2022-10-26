@@ -41,20 +41,6 @@ public class PlayerService {
         return new ResponseEntity<>("Player has been saved! id:"+ player.getId(), HttpStatus.OK);
     }
 
-    public ResponseEntity<Player> LoginPLayer(String email) {
-        email = email.replace('"', ' ');
-        List<Player> players = playerRepository.findAll();
-
-        System.out.println(email);
-
-        for (var p:players){
-            if (p.getEmail().contains(email.trim())) {
-                return new ResponseEntity<>(p, HttpStatus.OK);
-            }
-        }
-        return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
-    }
-
 
     //Put Services
 
