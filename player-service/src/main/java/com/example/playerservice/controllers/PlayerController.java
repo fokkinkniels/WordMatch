@@ -41,6 +41,11 @@ public class PlayerController {
         return playerService.CreateNewPLayer(player);
     }
 
+    @PostMapping("/login")
+    public ResponseEntity<Player> LoginPlayer(@RequestBody String email){
+        return playerService.LoginPLayer(email);
+    }
+
 
     //Put Endpoints
 

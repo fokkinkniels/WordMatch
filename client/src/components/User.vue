@@ -20,20 +20,19 @@
             </ul>
             <br>
         </div>
+        <button @click="test">
+            test
+        </button>
     </div>
   </div>    
 </template>
 
 <script>
-import axios from 'axios';
 
 export default {
-    
     data () {
         return {
             state: 1,
-            data: "",
-            baseUrl: "http://localhost:8093/api/player",
 
             id: "",
             name: "",
@@ -46,11 +45,7 @@ export default {
     methods: {
         async createUser(){
             const json = JSON.stringify({name: this.name,email: this.email,friendIds: this.friendsIds})
-            const res = await axios.post(this.baseUrl+"/create", json,  {
-                headers: {
-                    'Content-Type': 'application/json'
-                    }
-                }); 
+            const res = await this.$axios.post("/create", json); 
             if (res.status == 200){
                 this.id = res.data.split("id:")[1]
                 this.state = 1;
@@ -58,18 +53,21 @@ export default {
             }
         },
         async getAllUsers() {
-            const res = await axios.get(this.baseUrl+"/all")
+            const res = await this.$axios.get("/all")
             if (res.status == 200){
                 this.users = res.data;
             }
         },
         isFriend(friendID){
             return this.users.find(x => x.id === friendID)
+        },
+        test(){
+            console.log("test")
         }
     },
     mounted () {
         this.getAllUsers();
-  }
+    },
 }
 </script>
 
