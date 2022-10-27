@@ -79,6 +79,7 @@ export default {
             tmpFriendList: [],
             
             users: [],
+            response: "",
         }
     },
     methods: {
@@ -143,6 +144,10 @@ export default {
                 }
             }
         },
+
+        SetResponse(res){
+            this.response = res
+        }
 
     },
     beforeMount () {

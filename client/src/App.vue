@@ -1,16 +1,19 @@
 <template>
     <div> 
         <User/>
+      <gauth/>
   </div>
 </template>
 
 
 <script>
 import User from './components/User.vue'
+import gauth from "./components/gauth.vue"
 
 export default {
   name: 'App',
   components: {
+    gauth,
     User
   }
 }
