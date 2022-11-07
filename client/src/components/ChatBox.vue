@@ -25,6 +25,7 @@
         data () {
             return {
                 enabled: false,
+                id: "",
                 username: "",
                 newMessage: "",
                 messages: [],
@@ -39,6 +40,14 @@
             this.socket.on("message", data => {
                 this.messages.push(data)
             });
+
+            this.socket.on("private message", ({ content, from }) => {
+                if (this.id === from) {
+                    this.messages.push({
+                        content,
+                        fromSelf: false,
+                    });
+            }});
         },
         methods: {
             join(){
@@ -49,16 +58,27 @@
                 this.state = 0;
             },
             setUsername() {
-                console.log(this.username + "test")
                 if(this.username != ''){
-                    this.socket.emit("setUsername", this.username)
+                    this.socket.emit("setUser", {'username': this.username, 'id': this.id})
                 }
                 this.join()
             },
             sendMessage(){
                 this.socket.emit("message", this.newMessage)
                 this.newMessage = "";
-            }
+            },
+            onMessage(content) {
+                if (this.selectedUser) {
+                    this.socket.emit("private message", {
+                    content,
+                    to: this.id,
+                });
+                    this.selectedUser.messages.push({
+                    content,
+                    fromSelf: true,
+                });
+                }
+            },
         },
     }
 </script>

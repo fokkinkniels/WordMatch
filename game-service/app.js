@@ -8,13 +8,24 @@ const Io= require('socket.io')(Http, {
 
 var port = 3000;
 
+
 Io.on("connection", (socket) => {
     console.log("New connection with id:" + socket.id)
     socket.username = socket.id
 
     socket.on("message", (msg) => Io.emit("message", { 'user': socket.username, 'message': msg }))
 
-    socket.on("setUsername", (data) => socket.username = data)
+    socket.on("private message", ({ content, to }) => {
+      socket.to(to).emit("private message", {
+        content,
+        from: socket.id,
+      });
+    });
+
+    socket.on("setUser", (data) => {
+      socket.username = data.username
+      socket.id = data.id
+    })
 
     socket.on("join", (data) => socket.broadcast.emit("message", { 'user': socket.username, 'message': 'joined' }))
 

@@ -17,7 +17,6 @@
         <button v-on:click="state = 1">Back</button>
     </div>
 
-
     <div v-if="state == 1">
         <h2>My profile:</h2>
         <p>{{name}}</p>
@@ -112,11 +111,10 @@ export default {
         async getUser(id){
             const res = await this.$axios.get("/"+id)
             if (res.status == 200){
-                this.id = res.data.id;
-                this.name = res.data.name;
+                this.id, this.$refs.chatbox.id  = res.data.id;
+                this.name, this.$refs.chatbox.username = res.data.name;
                 this.email = res.data.email;
                 this.friendsIds = res.data.friendsIds;
-                this.$refs.chatbox.username = this.name
                 this.$refs.chatbox.setUsername()
                 this.getMyFriends();
                 this.state = 1
@@ -153,11 +151,6 @@ export default {
                 }
             }
         },
-
-        SetResponse(res){
-            this.response = res
-        }
-
     },
     beforeMount () {
     },
