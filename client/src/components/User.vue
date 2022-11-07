@@ -1,5 +1,13 @@
 <template>
   <div>
+    <div v-if="state == -1">
+        <div class="user" v-for="(user, i) in users" :key="i" >
+            <h3>{{user.name}}</h3>
+            <button v-on:click="getUser(user.id)">Login</button>
+            <br>
+        </div>
+    </div>
+
     <div v-if="state == 0">
         <form @submit.prevent="createUser">
             <input placeholder="Name..." v-model="tmpName" type="text">
@@ -11,15 +19,15 @@
 
 
     <div v-if="state == 1">
-        <h1>My profile:</h1>
+        <h2>My profile:</h2>
         <p>{{name}}</p>
         <p>{{email}}</p>
         <br>
-        <p>My Friends:</p>
+        <h2>My Friends:</h2>
 
         <div class="friend" v-for="(friend, i) in myfriends" :key="i">
-            <h3>{{friend.name}}</h3>
-            <button><p>Invite</p></button>
+            <p>{{friend.name}}</p>
+            <button>Invite</button>
             <button v-on:click="RemoveFriend(friend.id)">Remove Friend</button>
             <br>
         </div>
@@ -28,6 +36,8 @@
         <button v-on:click="state = 2">Add New Friend</button>
         <button v-on:click="state = 0">Add New User</button>
         <button v-on:click="state = 3">Remove Player</button>
+        <br>
+        <button v-on:click="state = -1">Logout</button>
     </div>
 
 
@@ -49,24 +59,26 @@
             <button v-on:click="RemoveUser(user.id)">Remove User</button>
             <br>
         </div>
-        <br>
-        <button v-on:click="state = 1">Back</button>
+            <br>
+            <button v-on:click="state = 1">Back</button>
     </div>
     <br>
-    <button @click="test">
-            test
-        </button>
-</div>    
+    <ChatBox ref="chatbox"/>
+
+    </div>    
 </template>
 
 <script>
-
+import ChatBox from './ChatBox'
 export default {
+    components: {
+        ChatBox
+    },
     data () {
         return {
-            state: 1,
+            state: -1,
 
-            id: "634001317da2a40207f13413",
+            id: "",
             name: "",
             email: "",   
             friendsIds: [],  
@@ -100,17 +112,14 @@ export default {
         async getUser(id){
             const res = await this.$axios.get("/"+id)
             if (res.status == 200){
-                this.tmpId = res.data.id;
-                this.tmpName = res.data.name;
-                this.tmpEmail = res.data.email;
-                this.tmpFriendsIds = res.data.friendsIds;
-
-                if (this.check == 0){
-                    this.name = this.tmpName
-                    this.email = this.tmpEmail
-                    this.friendsIds = this.tmpFriendList
-                    this.check = 1
-                }
+                this.id = res.data.id;
+                this.name = res.data.name;
+                this.email = res.data.email;
+                this.friendsIds = res.data.friendsIds;
+                this.$refs.chatbox.username = this.name
+                this.$refs.chatbox.setUsername()
+                this.getMyFriends();
+                this.state = 1
             }
         },
         async getMyFriends(){
@@ -151,8 +160,6 @@ export default {
 
     },
     beforeMount () {
-        this.getUser(this.id);
-        this.getMyFriends();
     },
     mounted () {
 

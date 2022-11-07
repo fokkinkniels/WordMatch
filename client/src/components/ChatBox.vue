@@ -1,13 +1,6 @@
 <template>
-    <div id="app">
+    <div id="app" v-if="enabled == true">
         <div v-if="state == 0">
-            <form @submit.prevent="setUsername">
-                <input type="text" placeholder="Username..." v-model="username">
-                <input type="submit" value="Join">
-            </form>
-        </div>
-
-        <div v-if="state == 1">
             <ul id="chatBox">
                 <li v-for="(message, i) in messages" :key="i">
                     <b>{{ message.user }}:</b> {{ message.message }}
@@ -31,7 +24,8 @@
         name: 'BlockGame',
         data () {
             return {
-                username: '',
+                enabled: false,
+                username: "",
                 newMessage: "",
                 messages: [],
                 socket: {},
@@ -44,18 +38,18 @@
         mounted () {
             this.socket.on("message", data => {
                 this.messages.push(data)
-            })
+            });
         },
         methods: {
             join(){
                 this.socket.emit("join", this.username)
-                this.state = 1;
             },
             leave(){
                 this.socket.emit("leave", this.username)
                 this.state = 0;
             },
             setUsername() {
+                console.log(this.username + "test")
                 if(this.username != ''){
                     this.socket.emit("setUsername", this.username)
                 }

@@ -1,22 +1,20 @@
 <template>
     <div> 
       <User/>
-      <game/>
   </div>
 </template>
 
 
 <script>
 import User from './components/User.vue'
-import game from "./components/game.vue"
 
 export default {
-  name: 'App',
-  components: {
-    User,
-    game
-  }
+    name: "App",
+    components: {
+        User,
+    }
 }
+
 </script>
 
 <style>
