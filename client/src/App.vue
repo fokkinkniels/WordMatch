@@ -1,20 +1,20 @@
 <template>
     <div> 
-        <User/>
-      <gauth/>
+      <User/>
+      <game/>
   </div>
 </template>
 
 
 <script>
 import User from './components/User.vue'
-import gauth from "./components/gauth.vue"
+import game from "./components/game.vue"
 
 export default {
   name: 'App',
   components: {
-    gauth,
-    User
+    User,
+    game
   }
 }
 </script>
