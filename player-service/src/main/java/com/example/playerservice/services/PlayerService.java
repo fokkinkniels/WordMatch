@@ -53,10 +53,19 @@ public class PlayerService {
 
         if (playerRepository.findById(ids.get(0)).isPresent()){
             Player player = playerRepository.findById(ids.get(0)).get();
+            Player friend = playerRepository.findById(ids.get(1)).get();
             var friends = player.getFriendIds();
+            var friendsFriends = friend.getFriendIds();
+
             if (!friends.contains(friendId)){
                 friends.add(friendId);
                 playerRepository.save(player);
+                if(!friendsFriends.contains(playerId)){
+                    friendsFriends.add(playerId);
+                    playerRepository.save(friend);
+                }
+                else
+                    return new ResponseEntity<>("Players are already friends", HttpStatus.BAD_REQUEST);
                 return new ResponseEntity<>("Friend Added", HttpStatus.OK);
             }
             else
@@ -72,11 +81,19 @@ public class PlayerService {
 
         if (playerRepository.findById(playerId).isPresent()){
             Player player = playerRepository.findById(playerId).get();
+            Player friend = playerRepository.findById(friendId).get();
             var friends = player.getFriendIds();
+            var friendsFriends = friend.getFriendIds();
 
             if (friends.contains(friendId)){
                 friends.remove(friendId);
                 playerRepository.save(player);
+                if(friendsFriends.contains(playerId)){
+                    friendsFriends.remove(playerId);
+                    playerRepository.save(friend);
+                }
+                else
+                    return new ResponseEntity<>("Players are already friends", HttpStatus.BAD_REQUEST);
                 return new ResponseEntity<>("Friend Removed", HttpStatus.OK);
             }
             else
