@@ -1,6 +1,6 @@
 const Express = require("express")();
 const Http = require("http").Server(Express);
-const Socketio= require('socket.io')(Http, {
+const Io= require('socket.io')(Http, {
     cors: {
       origin: '*',
     }
@@ -8,9 +8,18 @@ const Socketio= require('socket.io')(Http, {
 
 var port = 3000;
 
-Socketio.on("connection", (socket) => {
+Io.on("connection", (socket) => {
     console.log("New connection with id:" + socket.id)
-    socket.username = "None"
+    socket.username = socket.id
+
+    socket.on("message", (msg) => Io.emit("message", { 'user': socket.username, 'message': msg }))
+
+    socket.on("setUsername", (data) => socket.username = data)
+
+    socket.on("join", (data) => socket.broadcast.emit("message", { 'user': socket.username, 'message': 'joined' }))
+
+    socket.on("leave", (data) => socket.broadcast.emit("message", { 'user': socket.username, 'message': 'left' }))
+        
 });
 
 Http.listen(port, () => {
