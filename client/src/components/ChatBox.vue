@@ -46,7 +46,7 @@
                     this.messages.push({
                         content,
                         fromSelf: false,
-                    });
+                });
             }});
         },
         methods: {
