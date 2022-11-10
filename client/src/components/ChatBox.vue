@@ -19,7 +19,7 @@
 </template>
 
 <script>
-    import io from "socket.io-client"; 
+    import Socket from "./socket"
     export default {
         name: 'BlockGame',
         data () {
@@ -34,14 +34,13 @@
             }
         },
         created() {
-            this.socket = io("http://localhost:3000"); 
         },
         mounted () {
-            this.socket.on("message", data => {
+            Socket.on("message", data => {
                 this.messages.push(data)
             });
 
-            this.socket.on("private message", ({ content, from }) => {
+            Socket.on("private message", ({ content, from }) => {
                 if (this.id === from) {
                     this.messages.push({
                         content,
@@ -51,25 +50,25 @@
         },
         methods: {
             join(){
-                this.socket.emit("join", this.username)
+                Socket.emit("join", this.username)
             },
             leave(){
-                this.socket.emit("leave", this.username)
+                Socket.emit("leave", this.username)
                 this.state = 0;
             },
             setUsername() {
                 if(this.username != ''){
-                    this.socket.emit("setUser", {'username': this.username, 'id': this.id})
+                    Socket.emit("setUser", {'username': this.username, 'id': this.id})
                 }
                 this.join()
             },
             sendMessage(){
-                this.socket.emit("message", this.newMessage)
+                Socket.emit("message", this.newMessage)
                 this.newMessage = "";
             },
             onMessage(content) {
                 if (this.selectedUser) {
-                    this.socket.emit("private message", {
+                    Socket.emit("private message", {
                     content,
                     to: this.id,
                 });

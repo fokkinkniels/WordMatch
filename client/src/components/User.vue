@@ -26,7 +26,7 @@
 
         <div class="friend" v-for="(friend, i) in myfriends" :key="i">
             <p>{{friend.name}}</p>
-            <button>Invite</button>
+            <button v-on:click="InvitePlayer(friend.id)">Invite</button>
             <button v-on:click="RemoveFriend(friend.id)">Remove Friend</button>
             <br>
         </div>
@@ -69,6 +69,7 @@
 
 <script>
 import ChatBox from './ChatBox'
+import Socket from "./socket"
 export default {
     components: {
         ChatBox
@@ -111,13 +112,16 @@ export default {
         async getUser(id){
             const res = await this.$axios.get("/"+id)
             if (res.status == 200){
-                this.id, this.$refs.chatbox.id  = res.data.id;
-                this.name, this.$refs.chatbox.username = res.data.name;
+                this.id = res.data.id;
+                this.$refs.chatbox.id = res.data.id;
+                this.name = res.data.id;
+                this.$refs.chatbox.username = res.data.name;
                 this.email = res.data.email;
                 this.friendsIds = res.data.friendsIds;
                 this.$refs.chatbox.setUsername()
                 this.getMyFriends();
                 this.state = 1
+                Socket.emit("setUser", this.id)
             }
         },
         async getMyFriends(){
@@ -151,6 +155,9 @@ export default {
                 }
             }
         },
+        InvitePlayer(id){
+            Socket.emit("intite player", id)
+        }
     },
     beforeMount () {
     },
