@@ -69,7 +69,6 @@
 
 <script>
 import ChatBox from './ChatBox'
-import Socket from "./socket"
 export default {
     components: {
         ChatBox
@@ -121,7 +120,6 @@ export default {
                 this.$refs.chatbox.setUsername()
                 this.getMyFriends();
                 this.state = 1
-                Socket.emit("setUser", this.id)
             }
         },
         async getMyFriends(){
@@ -155,14 +153,10 @@ export default {
                 }
             }
         },
-        InvitePlayer(id){
-            Socket.emit("intite player", id)
-        }
     },
     beforeMount () {
     },
     mounted () {
-
         this.getAllUsers();
   }
 }
