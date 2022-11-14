@@ -27,11 +27,13 @@
         <div class="friend" v-for="(friend, i) in myfriends" :key="i">
             <p>{{friend.username}}</p>
             <p>{{friend.connected}}</p>
-            <div v-if="friend.invite != true">
-                <button v-on:click="InviteUser(friend.id)">Invite</button>
-            </div>
-            <div v-if="friend.invite == true">
-                <button v-on:click="JoinRoom(friend.id)">Accept Invite</button>
+            <div v-if="inRoom != true">
+                <div v-if="friend.invite != true">
+                    <button v-on:click="InviteUser(friend.id)">Invite</button>
+                </div>
+                <div v-if="friend.invite == true">
+                    <button v-on:click="JoinRoom(friend.id)">Accept Invite</button>
+                </div>
             </div>
             <button v-on:click="RemoveFriend(friend.id)">Remove Friend</button>
             <br>
@@ -81,6 +83,7 @@ export default {
     data () {
         return {
             state: -1,
+            inRoom: false,
 
             id: "",
             username: "",
@@ -163,10 +166,12 @@ export default {
             }
         },
         InviteUser (id) {
-            socket.emit("invite", {to: id})
+            socket.emit("invite", id)
+            this.inRoom = true
         },
         JoinRoom (id) {
-            socket.emit("accept invite", (id))
+            socket.emit("accept invite", id)
+            this.inRoom = true
         },
         RoomMessage (message) {
             socket.emit("room message", message)
@@ -216,7 +221,7 @@ export default {
         })})
 
         socket.on("room message", (data) => {
-                console.log(data)
+                console.log("Sender: " + data.from + "\n Message: " + data.message)
         })
     },
     unmounted() {

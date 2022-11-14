@@ -20,9 +20,9 @@ io.use((socket, next) => {
 
 io.on("connection", (socket) => {
 
-  console.log("New connection: \n   Username: "+ socket.username + " \n   Id: " + socket.id)
+  //General Logic
 
-  // fetch existing users
+  // fetch online users
   const users = [];
   for (let [id, socket] of io.of("/").sockets) {
     users.push({
@@ -32,34 +32,35 @@ io.on("connection", (socket) => {
   }
   socket.emit("users", users);
 
-  // notify existing users
-  socket.broadcast.emit("user connected", {
-    userID: socket.id,
-    username: socket.username,
-  });
+  // notify online users
+  socket.broadcast.emit("user connected", {  userID: socket.id,  username: socket.username,  });
 
-  socket.on("invite", ( to ) => {
-    socket.to(to).emit("invite", { from: socket.id });
-    
+  // notify users upon disconnection
+  socket.on("disconnect", () => {  socket.broadcast.emit("user disconnected", socket.id);  });
+
+
+  //Room Logic
+
+  // invite player to room
+  socket.on("invite", ( data ) => {
+    socket.to(data).emit("invite", { from: socket.id });
+
+    console.log( data + " " + socket.id)
     socket.room = socket.id
     socket.join(socket.room);
-    console.log(socket.room)
-
   });
 
+  // accept invite from player
   socket.on("accept invite", ( roomId ) => {
+    console.log(roomId)
     socket.room = roomId
-
     socket.join(socket.room)
-    //console.log(socket.room)
     io.to(socket.room).emit(socket.username + " Joined the room")
   })
 
+  // Send room messages to all members in that room
+  socket.on("room message", (data) => {  io.to(socket.room).emit({from: socket.username, message: data})  })
 
-  // notify users upon disconnection
-  socket.on("disconnect", () => {
-    socket.broadcast.emit("user disconnected", socket.id);
-  });
 });
 
 const PORT = process.env.PORT || 3000;
