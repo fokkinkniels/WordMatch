@@ -43,23 +43,39 @@ io.on("connection", (socket) => {
 
   // invite player to room
   socket.on("invite", ( data ) => {
-    socket.to(data).emit("invite", { from: socket.id });
-
-    console.log( data + " " + socket.id)
-    socket.room = socket.id
-    socket.join(socket.room);
+    if(socket.room == undefined){
+      socket.room = socket.id
+      socket.to(data).emit("invite", { from: socket.id });  //create new room
+    }
+    else{
+      socket.to(data).emit("invite", { from: socket.room})  //invite for existing room
+    }
   });
 
   // accept invite from player
   socket.on("accept invite", ( roomId ) => {
-    console.log(roomId)
     socket.room = roomId
-    socket.join(socket.room)
-    io.to(socket.room).emit(socket.username + " Joined the room")
+    io.to(socket.id).to(roomId).emit("accept invite", roomId)
+  })
+
+  //Join Room after invite has been accepted
+  socket.on("join room", data => {
+    console.log("Joined room: " + socket.room)
+    socket.join(socket.room);
+
+    io.to(socket.room).emit("room connect", socket.id)
   })
 
   // Send room messages to all members in that room
-  socket.on("room message", (data) => {  io.to(socket.room).emit({from: socket.username, message: data})  })
+  socket.on("room message", (data) => {  io.to(socket.room).emit("room message", {from: socket.username, message: data})  })
+
+  // Send notification to all members in the room that user leaves
+  socket.on("room disconnect", data => {
+      io.to(socket.room).emit("room disconnect", socket.id)
+      socket.leave(socket.room)
+      socket.room = undefined
+      console.log("Leaving Room and room is now: " + socket.room)
+  })
 
 });
 

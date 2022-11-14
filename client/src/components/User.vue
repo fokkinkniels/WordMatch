@@ -27,7 +27,7 @@
         <div class="friend" v-for="(friend, i) in myfriends" :key="i">
             <p>{{friend.username}}</p>
             <p>{{friend.connected}}</p>
-            <div v-if="inRoom != true">
+            <div v-if="!inRoomWith.includes(friend.id)">
                 <div v-if="friend.invite != true">
                     <button v-on:click="InviteUser(friend.id)">Invite</button>
                 </div>
@@ -38,6 +38,25 @@
             <button v-on:click="RemoveFriend(friend.id)">Remove Friend</button>
             <br>
         </div>
+
+        <br>
+
+        <div v-if="inRoom">
+            <ul>
+                <li v-for="(message, i) in messages" :key="i">
+                    <b>{{ message.from }}:</b> {{ message.message }}
+                </li>
+            </ul>
+
+            <form @submit.prevent="sendMessage">
+                <input type="text" placeholder="Message" v-model="newMessage">
+                <input type="submit" value="Send">
+            </form>
+
+            <button v-on:click="LeaveRoom ()">Disconnect</button>
+        </div>
+
+
         <br>
         <br>
         <button v-on:click="state = 2">Add New Friend</button>
@@ -84,6 +103,7 @@ export default {
         return {
             state: -1,
             inRoom: false,
+            inRoomWith: [],
 
             id: "",
             username: "",
@@ -99,6 +119,10 @@ export default {
             
             users: [],
             onlineUsers: [],
+
+            newMessage: "",
+            messages:[],
+
         }
     },
     methods: {
@@ -167,14 +191,21 @@ export default {
         },
         InviteUser (id) {
             socket.emit("invite", id)
-            this.inRoom = true
         },
         JoinRoom (id) {
             socket.emit("accept invite", id)
-            this.inRoom = true
         },
-        RoomMessage (message) {
-            socket.emit("room message", message)
+        LeaveRoom () {
+            this.inRoom = false;
+            this.inRoomWith = []
+            this.myfriends.forEach(friend => {
+                friend.invite = false;
+            })
+            socket.emit("room disconnect");
+        },
+        sendMessage () {
+            socket.emit("room message", this.newMessage)
+            this.newMessage = "";
         },
     },
     mounted () {
@@ -211,7 +242,6 @@ export default {
         }}});
 
         socket.on("invite", ({ from }) => {
-
             this.myfriends.forEach(friend => {
                 if (friend.id == from){
                     friend.invite = true;
@@ -221,7 +251,34 @@ export default {
         })})
 
         socket.on("room message", (data) => {
-                console.log("Sender: " + data.from + "\n Message: " + data.message)
+            this.messages.push(data)
+        })
+
+        socket.on("room connect", data =>{
+            if(data != this.id)
+                this.inRoomWith.push(data)
+        })
+
+        socket.on("room disconnect", data => {
+
+            var index = this.inRoomWith.indexOf(data);
+            if (index !== -1) {
+                this.inRoomWith.splice(index, 1);
+            }
+            this.myfriends.forEach( friend => {
+                if (friend.id == data){
+                    friend.invite = false
+                }
+            })
+            console.log(this.inRoomWith + data)
+                if (this.inRoomWith.length == 0 ){ 
+                    this.LeaveRoom ();
+                }
+        })
+
+        socket.on("accept invite", data => {
+            socket.emit("join room", data)
+            this.inRoom = true
         })
     },
     unmounted() {
