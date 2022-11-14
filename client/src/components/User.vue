@@ -194,6 +194,10 @@ export default {
         },
         JoinRoom (id) {
             socket.emit("accept invite", id)
+            this.myfriends.forEach( friend => {
+                friend.invite = false
+            })
+            console.log(this.myfriends)
         },
         LeaveRoom () {
             this.inRoom = false;
@@ -260,20 +264,13 @@ export default {
         })
 
         socket.on("room disconnect", data => {
-
             var index = this.inRoomWith.indexOf(data);
             if (index !== -1) {
                 this.inRoomWith.splice(index, 1);
             }
-            this.myfriends.forEach( friend => {
-                if (friend.id == data){
-                    friend.invite = false
-                }
-            })
-            console.log(this.inRoomWith + data)
-                if (this.inRoomWith.length == 0 ){ 
-                    this.LeaveRoom ();
-                }
+            if (this.inRoomWith.length == 0 ){ 
+                this.LeaveRoom ();
+            }
         })
 
         socket.on("accept invite", data => {

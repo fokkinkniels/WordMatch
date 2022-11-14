@@ -60,9 +60,8 @@ io.on("connection", (socket) => {
 
   //Join Room after invite has been accepted
   socket.on("join room", data => {
-    console.log("Joined room: " + socket.room)
+    console.log("Joined room: " + socket.room + " " + socket.username)
     socket.join(socket.room);
-
     io.to(socket.room).emit("room connect", socket.id)
   })
 
@@ -71,10 +70,10 @@ io.on("connection", (socket) => {
 
   // Send notification to all members in the room that user leaves
   socket.on("room disconnect", data => {
-      io.to(socket.room).emit("room disconnect", socket.id)
+      socket.to(socket.room).emit("room disconnect", socket.id)
       socket.leave(socket.room)
       socket.room = undefined
-      console.log("Leaving Room and room is now: " + socket.room)
+      console.log(socket.username + " is now leaving Room and their room is now: " + socket.room)
   })
 
 });
