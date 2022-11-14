@@ -2,15 +2,15 @@
   <div>
     <div v-if="state == -1">
         <div class="user" v-for="(user, i) in users" :key="i" >
-            <h3>{{user.name}}</h3>
-            <button v-on:click="getUser(user.id)">Login</button>
+            <h3>{{user.username}}</h3>
+            <button v-on:click="Login(user.id)">Login</button>
             <br>
         </div>
     </div>
 
     <div v-if="state == 0">
         <form @submit.prevent="createUser">
-            <input placeholder="Name..." v-model="tmpName" type="text">
+            <input placeholder="username..." v-model="tmpusername" type="text">
             <input placeholder="Email..." v-model="tmpEmail" type="text">
             <input type="submit" value="Submit">
         </form>
@@ -19,14 +19,20 @@
 
     <div v-if="state == 1">
         <h2>My profile:</h2>
-        <p>{{name}}</p>
+        <p>{{username}}</p>
         <p>{{email}}</p>
         <br>
         <h2>My Friends:</h2>
 
         <div class="friend" v-for="(friend, i) in myfriends" :key="i">
-            <p>{{friend.name}}</p>
-            <button v-on:click="InvitePlayer(friend.id)">Invite</button>
+            <p>{{friend.username}}</p>
+            <p>{{friend.connected}}</p>
+            <div v-if="friend.invite != true">
+                <button v-on:click="InviteUser(friend.id)">Invite</button>
+            </div>
+            <div v-if="friend.invite == true">
+                <button v-on:click="JoinRoom(friend.id)">Accept Invite</button>
+            </div>
             <button v-on:click="RemoveFriend(friend.id)">Remove Friend</button>
             <br>
         </div>
@@ -42,7 +48,7 @@
 
     <div v-if="state == 2">
         <div class="user" v-for="(user, i) in users" :key="i" >
-            <h3>{{user.name}}</h3>
+            <h3>{{user.username}}</h3>
             <p>{{user.email}}</p>
             <button v-on:click="AddFriend(user.id)">Add Friend</button>
             <br>
@@ -53,7 +59,7 @@
 
     <div v-if="state == 3">
         <div class="user" v-for="(user, i) in users" :key="i" >
-            <h3>{{user.name}}</h3>
+            <h3>{{user.username}}</h3>
             <p>{{user.email}}</p>
             <button v-on:click="RemoveUser(user.id)">Remove User</button>
             <br>
@@ -62,40 +68,42 @@
             <button v-on:click="state = 1">Back</button>
     </div>
     <br>
-    <ChatBox ref="chatbox"/>
 
     </div>    
 </template>
 
 <script>
-import ChatBox from './ChatBox'
+import socket from "../socket"
+
 export default {
     components: {
-        ChatBox
     },
     data () {
         return {
             state: -1,
 
             id: "",
-            name: "",
+            username: "",
             email: "",   
             friendsIds: [],  
             myfriends: [],
 
             check: 0,
             tmpId: "",
-            tmpName: "",
+            tmpusername: "",
             tmpEmail: "",
             tmpFriendList: [],
             
             users: [],
-            response: "",
+            onlineUsers: [],
         }
     },
     methods: {
         async createUser(){
-            const json = JSON.stringify({name: this.tmpName,email: this.tmpEmail,friendIds: this.tmpFriendList})
+            const json = JSON.stringify({   username: this.tmpusername, 
+                                            email: this.tmpEmail, 
+                                            friendIds: this.tmpFriendList})
+
             const res = await this.$axios.post("/create", json); 
             if (res.status == 200){
                 this.state = 1;
@@ -108,16 +116,17 @@ export default {
                 this.users = res.data;
             }
         },
-        async getUser(id){
+        async Login(id){
             const res = await this.$axios.get("/"+id)
             if (res.status == 200){
                 this.id = res.data.id;
-                this.$refs.chatbox.id = res.data.id;
-                this.name = res.data.id;
-                this.$refs.chatbox.username = res.data.name;
+                this.username = res.data.username;
                 this.email = res.data.email;
                 this.friendsIds = res.data.friendsIds;
-                this.$refs.chatbox.setUsername()
+
+                socket.auth = {"username": this.username,"id": this.id};
+                socket.connect();
+
                 this.getMyFriends();
                 this.state = 1
             }
@@ -153,12 +162,66 @@ export default {
                 }
             }
         },
-    },
-    beforeMount () {
+        InviteUser (id) {
+            socket.emit("invite", {to: id})
+        },
+        JoinRoom (id) {
+            socket.emit("accept invite", (id))
+        },
+        RoomMessage (message) {
+            socket.emit("room message", message)
+        },
     },
     mounted () {
         this.getAllUsers();
-  }
+    },
+    created() {
+        socket.on("connect_error", (err) => {
+        if (err.message === "invalid username") {
+            this.usernameAlreadySelected = false;
+        }});
+
+        socket.on("connect", () => {
+            this.onlineUsers.forEach((user) => {
+                if (user.self) {
+                    user.connected = true;
+        }})});
+
+        socket.on("disconnect", () => {
+            this.onlineUsers.forEach((user) => {
+                if (user.self) {
+                user.connected = false;
+        }})});
+
+        socket.on("user connected", (user) => {
+            this.onlineUsers.push(user);
+        });
+
+        socket.on("user disconnected", (id) => {
+        for (let i = 0; i < this.onlineUsers.length; i++) {
+            const user = this.onlineUsers[i];
+            if (user.userID === id) {
+                user.connected = false;
+                break;
+        }}});
+
+        socket.on("invite", ({ from }) => {
+
+            this.myfriends.forEach(friend => {
+                if (friend.id == from){
+                    friend.invite = true;
+                }
+                else
+                    friend.invite = false;
+        })})
+
+        socket.on("room message", (data) => {
+                console.log(data)
+        })
+    },
+    unmounted() {
+        socket.off("connect_error");
+    },
 }
 </script>
 

@@ -10,12 +10,12 @@ public class Player {
 
     @Id
     private String id;
-    private String name;
+    private String username;
     private String email;
     private List<String> friendIds;
 
-    public Player(String name, String email, List<String> friendIds) {
-        this.name = name;
+    public Player(String username, String email, List<String> friendIds) {
+        this.username = username;
         this.email = email;
         this.friendIds = friendIds;
     }
