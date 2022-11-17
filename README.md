@@ -1,5 +1,9 @@
 # WordMatch
 
-Dit project heeft betrekking op mijn individueel project voor semester 3 bij de Fontys. in dit project zal al mijn documentatie, code en eventueel andere benodigdheden staan voor mijn project. 
+This is the general repository for my WordMatch project, all connected repositories will be listed below:
 
-Het grootste deel van mijn documentatie staat in de Wiki van het project. Sommige dingen zoals afbeeldingen staat in de folder 'documentatie'.
+#### Frontend: https://github.com/fokkinkniels/WordMatch_Frontend
+
+#### Api: https://github.com/fokkinkniels/Wordmatch_API
+
+#### Websocket Server: https://github.com/fokkinkniels/Wordmatch_Websockets
